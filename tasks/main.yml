@@ -1,0 +1,8 @@
+---
+- block:
+  - include: user.yml
+  - include: setup.yml
+  when: (binary_upgrade is not defined) or (binary_upgrade == "")
+
+- include: golang.yml
+  when: golang_version is defined

@@ -1,0 +1,33 @@
+---
+- name: Check if user exists
+  user:
+    name: "{{ user }}"
+    state: present
+  check_mode: yes
+  register: user_status
+
+- name: User
+  block:
+    - name: Create a new user
+      user:
+        name: "{{ user }}"
+        shell: /bin/bash
+        password: "{{ password | password_hash('sha512') }}"
+
+    - name: Add the user to sudoers
+      shell: usermod -G sudo,{{ user }} {{ user }}
+
+    - name: Disable the root user
+      user:
+        name: root
+        state: present
+        password_lock: true
+
+    - name: Disable the debian user
+      user:
+        name: debian
+        state: present
+        password_lock: true
+        shell: "/sbin/nologin"
+      when: (provider is defined) and (provider == 'ovhcloud')
+  when: user_status.state is not defined
