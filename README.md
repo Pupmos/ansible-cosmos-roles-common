@@ -1,6 +1,6 @@
-# Ansible
+# Pupmos/ansible-cosmos-roles-common
 
-An ansible role for initializing a new Cosmos full-node.
+An Ansible role for initializing a new Cosmos full-node.
 
 ## Usage
 
