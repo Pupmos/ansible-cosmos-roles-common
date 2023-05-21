@@ -4,3 +4,6 @@
     name: iptables
     state: restarted
   listen: "restart iptables"
+
+  # MEVSpace have made changes to their Debian images
+  when: {{ provider }} is not 'mevspace'
