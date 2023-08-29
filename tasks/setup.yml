@@ -26,6 +26,7 @@
       - rsync
       - sysstat
       - cron
+      - rsyslog
 
 - name: Set timezone to UTC
   community.general.timezone:
