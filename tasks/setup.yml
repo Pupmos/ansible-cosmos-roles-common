@@ -25,6 +25,7 @@
       - bzip2
       - rsync
       - sysstat
+      - cron
 
 - name: Set timezone to UTC
   community.general.timezone:
