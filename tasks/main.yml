@@ -1,8 +1,8 @@
 ---
 - block:
-  - include: user.yml
-  - include: setup.yml
+  - include_tasks: user.yml
+  - include_tasks: setup.yml
   when: (binary_upgrade is not defined) or (binary_upgrade == "")
 
-- include: golang.yml
+- include_tasks: golang.yml
   when: golang_version is defined
